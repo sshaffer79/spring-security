@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
+                .antMatchers("/", "/home", "/hello").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -48,12 +48,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authProvider());
+//        auth.authenticationProvider(authProvider());
 
-//        auth.inMemoryAuthentication()
-//            .withUser("user")
-//            .password("password")
-//            .roles("USER");
+        auth.inMemoryAuthentication()
+            .withUser("user")
+            .password("password")
+            .roles("USER", "ACTUATOR");
     }
 
     @Bean

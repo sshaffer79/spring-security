@@ -23,7 +23,7 @@ public class CustomerUserDetailsService implements UserDetailsService {
                 new Object[] { username },
                 (rs, rownumber) -> {
                     CustomerUserDetails details = new CustomerUserDetails();
-                    details.setUserName(rs.getString("email"));
+                    details.setUserName(rs.getString("user_name"));
                     details.setPassword(rs.getString("password"));
                     details.setEnabled(rs.getInt("active") == 1 ? true : false);
                     return details;
