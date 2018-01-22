@@ -22,3 +22,9 @@ CREATE TABLE `persistent_logins` (
 
 INSERT INTO `spring_users`(`user_name`,`password`,`active`)
 VALUES('user', '$2a$12$ZNOYcndi4Mi7LlLFvh0Fzu844vlOCSTtJzFycTONTnMpF0Av2IsCK', 1);
+
+INSERT INTO `spring_users`(`user_name`,`password`,`active`)
+VALUES('user2', '$2a$12$ZNOYcndi4Mi7LlLFvh0Fzu844vlOCSTtJzFycTONTnMpF0Av2IsCK', 0);
+
+INSERT INTO `spring_users`(`user_name`,`password`,`active`)
+VALUES('user3', '$2a$12$ZNOYcndi4Mi7LlLFvh0Fzu844vlOCSTtJzFycTONTnMpF0Av2IsCK', 1);
