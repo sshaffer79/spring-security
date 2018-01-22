@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import java.util.List;
 
 public class CustomerUserDetailsService implements UserDetailsService {
-    @Value("${security.userbyusername.sql}")
+    @Value("${security.userByUsername.sql}")
     private String sql;
 
     @Autowired

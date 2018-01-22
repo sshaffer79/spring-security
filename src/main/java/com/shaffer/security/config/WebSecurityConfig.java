@@ -26,13 +26,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
+    @Value("${security.rememberMe.cookieName:remember-me}")
+    String rememberMeCookieName;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home", "/hello").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/", "/home", "/hello")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
                 .and()
+                .csrf()
+                .disable()
                 .formLogin()
                 .successHandler(savedRequestAwareAuthenticationSuccessHandler())
                 .loginPage("/login")
@@ -41,7 +48,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .permitAll()
 	            .and()
-                .rememberMe().tokenRepository(persistentTokenRepository())
+                .rememberMe()
+                .tokenRepository(persistentTokenRepository())
+                .rememberMeCookieName("user-remember")
                 .userDetailsService(mySQLUserDetails())
                 .tokenValiditySeconds(1209600);
     }
