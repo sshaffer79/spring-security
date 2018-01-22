@@ -12,5 +12,13 @@ CREATE TABLE `spring_users` (
   UNIQUE INDEX `user_name_UNIQUE` (`user_name` ASC)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `persistent_logins` (
+    `username` varchar(64) not null,
+    `series` varchar(64) not null,
+    `token` varchar(64) not null,
+    `last_used` timestamp not null,
+    PRIMARY KEY (series)
+);
+
 INSERT INTO `spring_users`(`user_name`,`password`,`active`)
 VALUES('user', '$2a$12$ZNOYcndi4Mi7LlLFvh0Fzu844vlOCSTtJzFycTONTnMpF0Av2IsCK', 1);
