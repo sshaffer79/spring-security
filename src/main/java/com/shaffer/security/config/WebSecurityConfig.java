@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	            .and()
                 .rememberMe()
                 .tokenRepository(persistentTokenRepository())
-                .rememberMeCookieName("user-remember")
+                .rememberMeCookieName(rememberMeCookieName)
                 .userDetailsService(mySQLUserDetails())
                 .tokenValiditySeconds(1209600);
     }
